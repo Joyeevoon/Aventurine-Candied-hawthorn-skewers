@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>浪浪仙冰糖葫芦串串</title>
+  <link rel="icon" href="./assets/ui/ui-icon-moe-cat-head-candy-progress-128.webp" type="image/webp" />
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/": "./vendor/addons/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- loading screen -->
+  <div class="loader" id="loader" role="status" aria-label="加载中">
+    <img class="loader-cat" src="./assets/ui/ui-button-moe-cat-head-candy-front-transparent-480.webp" alt="" draggable="false" />
+    <h1 class="loader-title">浪浪仙冰糖葫芦串串</h1>
+    <div class="loader-bar"><i id="loaderFill"></i></div>
+    <p class="loader-text"><span id="loaderMsg">正在熬糖…</span><b id="loaderPct">0%</b></p>
+  </div>
+
+  <div class="app" id="app" aria-hidden="true">
+    <header class="top">
+      <h1 class="title">浪浪仙冰糖葫芦串串</h1>
+      <p class="hint" id="hint">点「萌物」，把浪浪仙一颗颗串上签子</p>
+      <div class="progress" id="progress" aria-label="已串萌物">
+        <i></i><i></i><i></i><i></i>
+      </div>
+      <button class="sound" id="soundBtn" type="button" aria-label="音乐开关" data-on="1">♪</button>
+      <div class="made" id="made"></div>
+    </header>
+
+    <main class="stage" id="stage">
+      <canvas id="scene" aria-label="可 360° 旋转的浪浪仙冰糖葫芦"></canvas>
+      <div class="toast" id="toast" role="status"></div>
+      <div class="rotate-tip" id="rotateTip">↔ 拖动 360° 旋转</div>
+    </main>
+
+    <footer class="tray" id="tray">
+      <button class="pick pick-moe" id="moeBtn" type="button">
+        <img src="./assets/ui/ui-button-moe-cat-head-candy-front-transparent-480.webp" alt="浪浪仙萌物糖球" draggable="false" />
+        <span class="pick-label">串萌物</span>
+        <span class="pick-sub" id="moeSub">0 / 4</span>
+      </button>
+      <button class="pick pick-milk is-locked" id="milkBtn" type="button">
+        <img src="./assets/ui/ui-button-milk-skin-film-transparent-480.webp" alt="奶皮" draggable="false" />
+        <span class="pick-label">铺奶皮</span>
+        <span class="pick-sub" id="milkSub">最后再加</span>
+      </button>
+    </footer>
+
+    <section class="done" id="done" aria-hidden="true">
+      <p class="done-kicker">完成一串！</p>
+      <p class="done-title" id="doneTitle">浪浪仙冰糖葫芦 · 4 颗</p>
+      <div class="done-actions">
+        <button type="button" class="btn btn-main" id="againBtn">再做一串</button>
+        <button type="button" class="btn" id="spinBtn">暂停旋转</button>
+      </div>
+    </section>
+  </div>
+
+    <section class="finish-modal" id="finishModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="制作完成">
+      <div class="finish-card">
+        <button class="finish-close" id="finishClose" type="button" aria-label="关闭">×</button>
+        <p class="finish-kicker">🎉 浪浪仙冰糖葫芦已制作完成！</p>
+        <div class="finish-photo">
+          <img src="./assets/ui/ui-modal-finish-photo-candied-skewer.png" alt="浪浪仙冰糖葫芦成品图" draggable="false" />
+        </div>
+        <button class="btn btn-main finish-save" id="saveBtn" type="button">保存图片</button>
+        <p class="finish-save-tip" id="saveTip">长按图片也可以保存哦</p>
+      </div>
+    </section>
+
+  <audio id="bgm" src="./assets/audio/bgm-gentle-healing-loop.mp3" loop preload="auto"></audio>
+  <audio id="meow" src="./assets/audio/sfx-cat-meow-cheerful-finish.m4a" preload="auto"></audio>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
